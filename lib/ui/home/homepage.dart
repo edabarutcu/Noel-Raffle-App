@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
             ),
             Positioned(
               left: 0,
-              top: 0,
+              top: 15,
               child: Image.asset(
                 'assets/images/logo3.png',
                 width: 108,
@@ -76,18 +77,27 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 50),
                   ElevatedButton(
                     onPressed: () {
-
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NewYearScreen()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFEE1919),
                        shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                       minimumSize: Size(270, 60), // Butonun minimum boyutunu belirler
+                      minimumSize:
+                          Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-                    child: Text('Yılbaşı Çekilişi'
-                    ,style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.white, fontSize: 25),),
-
+                    child: Text(
+                      'Yılbaşı Çekilişi',
+                      style: TextStyle(
+                          fontFamily: "MountainsofChristmas",
+                          color: Colors.white,
+                          fontSize: 25),
+                    ),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -96,19 +106,19 @@ class HomePage extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFEE1919),
-                        shape: RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
-
-
                       ),
-                                            minimumSize: Size(270, 60), // Butonun minimum boyutunu belirler
-
-
+                      minimumSize:
+                          Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-
-                   child: Text('Hediye Çekilişi'
-                    ,style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.white, fontSize: 25),),
-
+                    child: Text(
+                      'Hediye Çekilişi',
+                      style: TextStyle(
+                          fontFamily: "MountainsofChristmas",
+                          color: Colors.white,
+                          fontSize: 25),
+                    ),
                   ),
                 ],
               ),
@@ -252,10 +262,3 @@ class HomePage extends StatelessWidget {
     }
   }
 }
-
-
-
-
-
-
-
