@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
+import 'package:url_launcher/url_launcher.dart'; // Eklemeyi unutmayın!
 
 class HomePage extends StatelessWidget {
   @override
@@ -28,23 +29,24 @@ class HomePage extends StatelessWidget {
                 height: 90,
               ),
             ),
-         Positioned(
-  right: 0,
-  top: 0,
-  child: Transform.scale(
-    scale: 0.7, // Küçültme faktörü, 1 tam boyut demektir, 0.5 yarı boyut demektir
-    child: GestureDetector(
-      onTap: () {
-        openDialog(context);
-      },
-      child: Image.asset(
-        'assets/images/Vector.png',
-        width: 50,
-        height: 90,
-      ),
-    ),
-  ),
-),
+            Positioned(
+              right: 0,
+              top: 15,
+              child: Transform.scale(
+                scale:
+                    0.7, // Küçültme faktörü, 1 tam boyut demektir, 0.5 yarı boyut demektir
+                child: GestureDetector(
+                  onTap: () {
+                    openDialog(context);
+                  },
+                  child: Image.asset(
+                    'assets/images/Vector.png',
+                    width: 50,
+                    height: 90,
+                  ),
+                ),
+              ),
+            ),
             Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -76,7 +78,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 50),
                   ElevatedButton(
                     onPressed: () {
-                       Navigator.push(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => NewYearScreen()),
@@ -84,7 +86,7 @@ class HomePage extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFEE1919),
-                       shape: RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       minimumSize:
@@ -100,9 +102,7 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFEE1919),
                       shape: RoundedRectangleBorder(
@@ -133,7 +133,14 @@ class HomePage extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Noel Raffle', textAlign: TextAlign.center, style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.red, fontSize: 35),),
+          title: const Text(
+            'Noel Raffle',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: "MountainsofChristmas",
+                color: Colors.red,
+                fontSize: 35),
+          ),
           actions: [
             SizedBox(
               width: double.infinity,
@@ -143,7 +150,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => StatisticsScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => StatisticsScreen()),
                     );
                   },
                   child: Text('İstatistiklerimiz'),
@@ -220,12 +228,14 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed:() => {
-
-                  
-            
+                  onPressed: () async {
+                    const url = 'https://github.com/edabarutcu/Noel-Raffle-App';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   },
-
                   child: Text('Katkıda Bulun'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,
@@ -235,19 +245,21 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-
-
-
             SizedBox(
               width: double.infinity,
-
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('Kapat', style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.red, fontSize: 25),),
+                  child: Text(
+                    'Kapat',
+                    style: TextStyle(
+                        fontFamily: "MountainsofChristmas",
+                        color: Colors.red,
+                        fontSize: 25),
+                  ),
                 ),
               ),
             ),
@@ -256,6 +268,4 @@ class HomePage extends StatelessWidget {
       },
     );
   }
-
- 
 }
