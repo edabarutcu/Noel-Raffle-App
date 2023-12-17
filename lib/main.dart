@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
+import 'package:noel_raffle/ui/home/homepage.dart';
 import 'package:noel_raffle/ui/splash/splash_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const StatisticsScreen(),
+      home: const SplashScreen(),
     );
   }
 }

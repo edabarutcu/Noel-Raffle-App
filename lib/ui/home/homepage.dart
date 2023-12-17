@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,25 +19,25 @@ class HomePage extends StatelessWidget {
             ),
             Positioned(
               left: 0,
-              top: 0,
+              top: 15,
               child: Image.asset(
                 'assets/images/logo3.png',
-                width: 108, 
+                width: 108,
                 height: 90,
               ),
             ),
-         Positioned(
-  right: 0,
-  top: 0,
-  child: Transform.scale(
-    scale: 0.7, // Küçültme faktörü, 1 tam boyut demektir, 0.5 yarı boyut demektir
-    child: Image.asset(
-      'assets/images/Vector.png',
-      width: 50,
-      height: 90,
-    ),
-  ),
-),
+            Positioned(
+              right: 0,
+              top: 15,
+              child: Transform.scale(
+                scale: 0.7,
+                child: Image.asset(
+                  'assets/images/Vector.png',
+                  width: 50,
+                  height: 90,
+                ),
+              ),
+            ),
             Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
                     width: 190,
                     height: 190,
                   ),
-                  SizedBox(height: 20), 
+                  SizedBox(height: 20),
                   Text(
                     'Hediye Çekilişi',
                     style: TextStyle(
@@ -56,7 +57,7 @@ class HomePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10), 
+                  SizedBox(height: 10),
                   Text(
                     'Çekiliş türü seçiniz',
                     style: TextStyle(
@@ -68,39 +69,48 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 50),
                   ElevatedButton(
                     onPressed: () {
-                    
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NewYearScreen()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFEE1919), 
-                       shape: RoundedRectangleBorder(
+                      primary: Color(0xFFEE1919),
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                       minimumSize: Size(270, 60), // Butonun minimum boyutunu belirler
+                      minimumSize:
+                          Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-                    child: Text('Yılbaşı Çekilişi'
-                    ,style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.white, fontSize: 25),),
-
+                    child: Text(
+                      'Yılbaşı Çekilişi',
+                      style: TextStyle(
+                          fontFamily: "MountainsofChristmas",
+                          color: Colors.white,
+                          fontSize: 25),
+                    ),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                    
+                     
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFEE1919), 
-                        shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10), 
-                      
-
-                      ), 
-                                            minimumSize: Size(270, 60), // Butonun minimum boyutunu belirler
-
-                      
+                      primary: Color(0xFFEE1919),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      minimumSize:
+                          Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-                    
-                   child: Text('Hediye Çekilişi'
-                    ,style: TextStyle(fontFamily: "MountainsofChristmas", color: Colors.white, fontSize: 25),),
-
+                    child: Text(
+                      'Hediye Çekilişi',
+                      style: TextStyle(
+                          fontFamily: "MountainsofChristmas",
+                          color: Colors.white,
+                          fontSize: 25),
+                    ),
                   ),
                 ],
               ),
@@ -111,10 +121,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
