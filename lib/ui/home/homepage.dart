@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -221,7 +220,12 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: _launchURL,
+                  onPressed:() => {
+
+                  
+            
+                  },
+
                   child: Text('Katkıda Bulun'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,
@@ -253,12 +257,5 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _launchURL() async {
-    const url = 'https://www.buymeacoffee.com/ozgurkarakoc';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+ 
 }
