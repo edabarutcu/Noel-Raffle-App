@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:noel_raffle/ui/about/about_screen.dart';
 import 'package:noel_raffle/ui/splash/splash_screen.dart';
+import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
+
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const StatisticsScreen(),
     );
   }
 }

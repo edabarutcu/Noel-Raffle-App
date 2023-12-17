@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noel_raffle/ui/home/homepage.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,7 +16,13 @@ class SplashScreen extends StatelessWidget {
          );
       },
     );
-
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.red,
+        systemNavigationBarDividerColor: Colors.red,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -32,8 +39,12 @@ class SplashScreen extends StatelessWidget {
               Image.asset('assets/images/logo.png'),
               const SizedBox(height: 16),
               const Text(
-                'Rafflesss App',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                'Noel Raffle',
+                style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'MountainsofChristmas',
+                    color: Colors.white),
               ),
             ],
           ),
