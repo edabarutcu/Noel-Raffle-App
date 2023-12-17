@@ -3,20 +3,25 @@ import 'package:flutter/material.dart';
 class NewYearScreen extends StatelessWidget {
   final TextEditingController _sectorController = TextEditingController();
   final TextEditingController _groupController = TextEditingController();
-  final TextEditingController _additionalTextFieldController =
-      TextEditingController();
+  final TextEditingController _additionalTextFieldController = TextEditingController(); 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/background.jpg'),
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          // Your background image here
+          image: AssetImage('assets/images/background.jpg'),
+          fit: BoxFit.cover,
         ),
-        child: Stack(
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+        ),
+        body: Stack(
           fit: StackFit.expand,
           children: [
             Container(
@@ -43,7 +48,7 @@ class NewYearScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   _buildDropdownWidget(),
                   SizedBox(height: 20),
-                  _buildAdditionalDropdownWidget(context), // Pass context here
+                  _buildAdditionalDropdownWidget(context),
                 ],
               ),
             ),
@@ -53,7 +58,7 @@ class NewYearScreen extends StatelessWidget {
     );
   }
 
-
+ 
   Widget _buildDropdownWidget() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30),
