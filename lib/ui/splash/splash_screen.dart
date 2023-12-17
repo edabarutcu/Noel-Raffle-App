@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -7,14 +8,20 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 3),
-          () {
+      () {
         // Navigator.pushReplacement(
         //   context,
         //   MaterialPageRoute(builder: (context) => MainScreen()),
         // );
       },
     );
-
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.red,
+        systemNavigationBarDividerColor: Colors.red,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -31,8 +38,12 @@ class SplashScreen extends StatelessWidget {
               Image.asset('assets/images/logo.png'),
               const SizedBox(height: 16),
               const Text(
-                'Rafflesss App',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                'Noel Raffle',
+                style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'MountainsofChristmas',
+                    color: Colors.white),
               ),
             ],
           ),

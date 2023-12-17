@@ -84,5 +84,8 @@ flutter:
       fonts:
         - asset: assets/fonts/MountainsofChristmas-Bold.ttf
         - asset: assets/fonts/MountainsofChristmas-Regular.ttf
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
