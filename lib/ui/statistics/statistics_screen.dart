@@ -79,7 +79,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'MountainsofChristmas',
+                                  fontFamily: 'DancingScript',
                                   color: Colors.white),
                             ),
                           ],

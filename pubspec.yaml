@@ -103,5 +103,8 @@ flutter:
     - family: Cairo
       fonts:
         - asset: assets/fonts/Cairo.ttf
+    - family: DancingScript
+      fonts:
+        - asset: assets/fonts/DancingScript.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

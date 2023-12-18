@@ -59,21 +59,21 @@ class HomePage extends StatelessWidget {
                     height: 190,
                   ),
                   SizedBox(height: 20),
-                  Text(
+                  const Text(
                     'Hediye Çekilişi',
                     style: TextStyle(
                       color: Colors.white,
-                      fontFamily: "MountainsofChristmas",
+                      fontFamily: "DancingScript",
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 10),
-                  Text(
+                  const Text(
                     'Çekiliş türü seçiniz',
                     style: TextStyle(
                       color: Colors.white,
-                      fontFamily: "MountainsofChristmas",
+                      fontFamily: "DancingScript",
                       fontSize: 25,
                     ),
                   ),
@@ -94,10 +94,10 @@ class HomePage extends StatelessWidget {
                       minimumSize:
                           Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-                    child: Text(
+                    child: const Text(
                       'Yılbaşı Çekilişi',
                       style: TextStyle(
-                          fontFamily: "MountainsofChristmas",
+                          fontFamily: "DancingScript",
                           color: Colors.white,
                           fontSize: 25),
                     ),
@@ -119,10 +119,10 @@ class HomePage extends StatelessWidget {
                       minimumSize:
                           Size(270, 60), // Butonun minimum boyutunu belirler
                     ),
-                    child: Text(
+                    child: const Text(
                       'Hediye Çekilişi',
                       style: TextStyle(
-                          fontFamily: "MountainsofChristmas",
+                          fontFamily: "DancingScript",
                           color: Colors.white,
                           fontSize: 25),
                     ),
@@ -145,7 +145,7 @@ class HomePage extends StatelessWidget {
             'Noel Raffle',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: "MountainsofChristmas",
+                fontFamily: "DancingScript",
                 color: Colors.red,
                 fontSize: 35),
           ),
@@ -261,10 +261,10 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     'Kapat',
                     style: TextStyle(
-                        fontFamily: "MountainsofChristmas",
+                        fontFamily: "DancingScript",
                         color: Colors.red,
                         fontSize: 25),
                   ),
