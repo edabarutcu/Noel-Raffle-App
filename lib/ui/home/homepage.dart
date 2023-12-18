@@ -3,6 +3,7 @@ import 'package:noel_raffle/ui/about/about_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
 import 'package:url_launcher/url_launcher.dart'; // Eklemeyi unutmayın!
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -228,21 +229,19 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () async {
-                    const url = 'https://github.com/edabarutcu/Noel-Raffle-App';
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                  child: Text('Katkıda Bulun'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
-                    onPrimary: Colors.white,
-                    minimumSize: Size(200, 50),
-                  ),
-                ),
+                  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => WebViewPage()),
+    );
+  },
+  child: Text('Katkıda Bulun'),
+  style: ElevatedButton.styleFrom(
+    primary: Colors.red,
+    onPrimary: Colors.white,
+    minimumSize: Size(200, 50),
+  ),
+),
               ),
             ),
             SizedBox(
@@ -266,6 +265,23 @@ class HomePage extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class WebViewPage extends StatefulWidget {
+  @override
+  _WebViewPageState createState() => _WebViewPageState();
+}
+
+class _WebViewPageState extends State<WebViewPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Web Görünümü')),
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(url: Uri.parse('https://github.com/edabarutcu/Noel-Raffle-App')),
+      ),
     );
   }
 }
