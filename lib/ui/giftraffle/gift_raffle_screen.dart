@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
-
 import 'add_users_screen.dart';
 
 class GiftRaffleScreen extends StatefulWidget {
@@ -279,6 +278,4 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
       ),
     );
   }
-
-
 }
