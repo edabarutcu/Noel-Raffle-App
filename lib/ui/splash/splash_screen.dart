@@ -43,7 +43,7 @@ class SplashScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'MountainsofChristmas',
+                    fontFamily: 'DancingScript',
                     color: Colors.white),
               ),
             ],

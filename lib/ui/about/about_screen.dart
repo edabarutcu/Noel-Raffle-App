@@ -43,7 +43,7 @@ class AboutPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'MountainsofChristmas',
+                            fontFamily: 'DancingScript',
                             color: Colors.white),
                       ),
                     ],
