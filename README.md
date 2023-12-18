@@ -1,17 +1,50 @@
-# noel_raffle
+# Noel Raffle App
 
-A new Flutter project.
+This is a Flutter application developed for organizing and managing raffles. The app allows users to add participants and gifts, and then performs a raffle.
+
+## Features
+
+- Add participants with their name, surname, and email.
+- Add gifts with their name and count.
+- Perform a raffle and get the results.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK
+- Dart SDK
+- Android Studio or VS Code
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Noel-Raffle-App
+### Installation
+
+1. Clone the repo
+2. Install Flutter dependencies 
+3. Run the app
+
+## Usage
+
+Provide instructions on how to use your app, possibly with screenshots or videos.
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Eda Barutçu - 
+Muhammed Elşami - muhammed97r@hotmail.com
+
+Project Link: [https://github.com/muhammedelsami/Noel-Raffle-App](https://github.com/muhammedelsami/Noel-Raffle-App)
