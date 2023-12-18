@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noel_raffle/ui/about/about_screen.dart';
+import 'package:noel_raffle/ui/giftraffle/gift_raffle_screen.dart';
 import 'package:noel_raffle/ui/statistics/statistics_screen.dart';
 import 'package:noel_raffle/ui/newyearscreen/newyear_screen.dart';
 import 'package:url_launcher/url_launcher.dart'; // Eklemeyi unutmayın!
@@ -102,7 +103,13 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GiftRaffleScreen()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFEE1919),
                       shape: RoundedRectangleBorder(
