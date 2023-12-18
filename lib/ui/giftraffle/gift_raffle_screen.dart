@@ -255,7 +255,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                 } else {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UsersScreen()),
+                    MaterialPageRoute(builder: (context) => UsersScreen(title: _additionalTextFieldController.text)),
                   );
                 }
               },
