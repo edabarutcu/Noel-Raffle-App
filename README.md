@@ -44,7 +44,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Eda Barutçu - eda@hotmail.com 
+Eda Barutçu - edabarutcu@protonmail.com 
 
 Muhammed Elşami - muhammed97r@hotmail.com
 
