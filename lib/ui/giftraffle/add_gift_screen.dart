@@ -25,6 +25,9 @@ class _GiftsScreenState extends State<GiftsScreen> {
   final _nameController = TextEditingController();
   final _countController = TextEditingController();
 
+  final FocusNode _nameFocusNode = FocusNode();
+  final FocusNode _countFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

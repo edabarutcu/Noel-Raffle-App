@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 
     <application
-        android:label="noel_raffle"
+        android:label="Noel Raffle"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
