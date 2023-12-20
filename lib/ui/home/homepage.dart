@@ -216,11 +216,13 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => AboutPage()),
-                    );
+                  onPressed: () async {
+                    const url = 'https://www.noelraffle.com/tr';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   },
                   child: Text('Web Sitemiz'),
                   style: ElevatedButton.styleFrom(

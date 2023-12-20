@@ -44,7 +44,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Eda Barutçu - 
+Eda Barutçu - edabarutcu@protonmail.com 
+
 Muhammed Elşami - muhammed97r@hotmail.com
 
 Project Link: [https://github.com/muhammedelsami/Noel-Raffle-App](https://github.com/muhammedelsami/Noel-Raffle-App)

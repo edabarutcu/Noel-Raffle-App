@@ -184,10 +184,13 @@ class _UsersScreenState extends State<NewUsersScreen> {
     );
   }
 
-  Widget _buildDialog(BuildContext context, {required VoidCallback onSave}) {
-    return Scaffold(
-      backgroundColor:
-          Colors.transparent, // Make scaffold background transparent
+Widget _buildDialog(BuildContext context, {required VoidCallback onSave}) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).pop();
+    },
+    child: Scaffold(
+      backgroundColor: Colors.transparent, 
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -197,7 +200,7 @@ class _UsersScreenState extends State<NewUsersScreen> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.9),
+                  color: Color(0xE6D9D9D9), 
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
@@ -209,48 +212,40 @@ class _UsersScreenState extends State<NewUsersScreen> {
                       Text(
                         'Yeni Katılımcı',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.white), // Metin rengi beyaz yapıldı
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                          color: Colors.white,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 20),
                       TextField(
-                         controller: _nameController,
+                        controller: _nameController,
                         decoration: InputDecoration(labelText: 'Ad'),
                       ),
                       TextField(
-                          controller: _surnameController,
+                        controller: _surnameController,
                         decoration: InputDecoration(labelText: 'Soyad'),
                       ),
                       TextField(
-                          controller: _emailController,
+                        controller: _emailController,
                         decoration: InputDecoration(labelText: 'Email'),
                       ),
                       SizedBox(height: 20),
                       Center(
                         child: TextButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color(0xFF6A84BF)), // Arka plan rengi
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                                Colors.white), // Metin rengi
-                            textStyle: MaterialStateProperty.all<TextStyle>(
-                                TextStyle(fontSize: 18)), // Metin boyutu
-                            padding:
-                                MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                    EdgeInsets.symmetric(
-                                        horizontal: 110,
-                                        vertical: 15)), // Buton boyutu
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF6A84BF)),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
+                            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(horizontal: 110, vertical: 15)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    10), // Butonun kenar yuvarlaklığı
+                                borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                           ),
-                          child: Text('Ekle'), // Metin boyutu
+                          child: Text('Ekle'),
                           onPressed: () {
                             onSave();
                             Navigator.of(context).pop();
@@ -265,8 +260,10 @@ class _UsersScreenState extends State<NewUsersScreen> {
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildTextField(TextEditingController emailController, String label) {
     return Padding(

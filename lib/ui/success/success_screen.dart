@@ -50,7 +50,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/logo.png'), // replace with your logo
+                  Image.asset('assets/images/logo.png'),
                   const Padding(
                     padding: EdgeInsets.all(18.0),
                     child: Text(
