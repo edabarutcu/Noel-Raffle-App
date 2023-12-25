@@ -14,6 +14,25 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
   String? _groupController;
   String? _sectorController;
 
+  int _groupValue = 100;
+  int _sectorValue = 100;
+
+  var typeList = <String, int> {
+    'Ekip-Şirket': 10,
+    'Arkadaş-Sınıf': 20,
+    'Aile-Akraba': 30,
+    'Diğer': 40
+  };
+
+  var sectorList = <String, int> {
+    'Teknoloji': 10,
+    'Eğitim': 20,
+    'Gıda': 30,
+    'Sağlık': 40,
+    'Spor': 50,
+    'Diğer': 60
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,27 +61,27 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                 ),
               ),
             ),
-            Positioned(
-              top: 70,
-              left: 0,
-              right: 0,
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/gift-hand.png',
-                    width: 300,
-                    height: 250,
-                  ),
-                  SizedBox(height: 20),
-                  _buildAdditionalTextField(),
-                  SizedBox(height: 20),
-                  _customDropdownButton1(),
-                  SizedBox(height: 20),
-                  _customDropdownButton2(),
-                  SizedBox(height: 20),
-                  _buildButtonWidget(context),
-
-                ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 70),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/gift-hand.png',
+                      width: 300,
+                      height: 250,
+                    ),
+                    const SizedBox(height: 20),
+                    _buildAdditionalTextField(),
+                    const SizedBox(height: 20),
+                    _customDropdownButton1(),
+                    const SizedBox(height: 20),
+                    _customDropdownButton2(),
+                    const SizedBox(height: 20),
+                    _buildButtonWidget(context),
+              
+                  ],
+                ),
               ),
             ),
           ],
@@ -142,12 +161,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                           color: Color(0xFFCCCCCC)
                       )
                   ),
-                  items: <String>[
-                    'Ekip-Şirket',
-                    'Arkadaş-Sınıf',
-                    'Aile-Akraba',
-                    'Diğer'
-                  ].map((String value) {
+                  items: typeList.keys.toList().map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -156,6 +170,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       _groupController = value!;
+                      _groupValue = typeList[value]!;
                     });
                   },
                 ),
@@ -200,14 +215,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                           color: Color(0xFFCCCCCC)
                       )
                   ),
-                  items: <String>[
-                    'Teknoloji',
-                    'Eğitim',
-                    'Gıda',
-                    'Sağlık',
-                    'Spor',
-                    'Diğer'
-                  ].map((String value) {
+                  items: sectorList.keys.toList().map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -216,6 +224,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       _sectorController = value!;
+                      _sectorValue = sectorList[value]!;
                     });
                   },
                 ),
@@ -254,7 +263,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
                 } else {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UsersScreen(title: _additionalTextFieldController.text)),
+                    MaterialPageRoute(builder: (context) => UsersScreen(title: _additionalTextFieldController.text, groupValue: _groupValue, sectorValue: _sectorValue)),
                   );
                 }
               },
