@@ -11,8 +11,10 @@ import 'package:noel_raffle/ui/success/success_screen.dart';
 class GiftsScreen extends StatefulWidget {
   final List<User> users;
   final String title;
+  final int groupValue;
+  final int sectorValue;
 
-  const GiftsScreen({Key? key, required this.users, required this.title})
+  const GiftsScreen({Key? key, required this.users, required this.title, required this.groupValue, required this.sectorValue})
       : super(key: key);
 
   @override
@@ -107,7 +109,7 @@ class _GiftsScreenState extends State<GiftsScreen> {
     );
   }
 
-  Widget _buildDialog(BuildContext context, {required VoidCallback onSave}) {
+  Widget _buildDialogd(BuildContext context, {required VoidCallback onSave}) {
     return Center(
       child: SingleChildScrollView(
         child: AlertDialog(
@@ -149,6 +151,137 @@ class _GiftsScreenState extends State<GiftsScreen> {
       ),
     );
   }
+
+  Widget _buildDialog(BuildContext context, {required VoidCallback onSave}) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pop();
+      },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Yeni Hediye Ekle',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.red,
+                            fontFamily: "DancingScript",
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: TextField(
+                            controller: _nameController,
+                            decoration: InputDecoration(
+                              labelText: "Hediye Adı",
+                              labelStyle: TextStyle(color: Colors.grey, fontSize: 18, fontFamily: "Cairo"),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.red , width: 2),
+                              ),
+                            ),
+                            focusNode: _nameFocusNode,
+                            onSubmitted: (value) {
+                              _nameFocusNode.unfocus();
+                              FocusScope.of(context).requestFocus(_countFocusNode);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:10),
+                          child: TextField(
+                            controller: _countController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: "Hediye Sayısı",
+                              labelStyle: TextStyle(color: Colors.grey, fontSize: 18,fontFamily: "Cairo"),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.red, width: 2),
+                              ),
+                            ),
+                            focusNode: _countFocusNode,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Container(
+                            width: double.infinity,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF6A84BF)),
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(horizontal: 0, vertical: 15)),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              child: const Text('Ekle' , style: TextStyle(fontFamily: "Cairo")),
+                              onPressed: () {
+                                if (_nameController.text.isEmpty ||
+                                    _countController.text.isEmpty) {
+                                  // Show an error message
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            'Tüm alanlar zorunludur!!')),
+                                  );
+                                } else {
+                                  onSave();
+                                  Navigator.of(context).pop();
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 
   Widget _buildListView(double width, double height) {
     return SizedBox(
@@ -268,11 +401,13 @@ class _GiftsScreenState extends State<GiftsScreen> {
 
     var body = {
       "title": widget.title,
-      "group": 10,
-      "sector": 10,
+      "group": widget.groupValue,
+      "sector": widget.sectorValue,
       "participants": participants,
       "gifts": gifts
     };
+
+    print(body);
 
     var response = await http.post(
       url,
@@ -286,14 +421,14 @@ class _GiftsScreenState extends State<GiftsScreen> {
           context, MaterialPageRoute(builder: (context) => SuccessScreen()));
       return true;
     } else {
-      print('Failed to send post request. Status code: ${response.statusCode}');
+      print('Failed to send post request. Status code: ${response.statusCode} ${response.body}');
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Uyarı',
               textAlign: TextAlign.center,
               style: TextStyle(fontFamily: "Cairo", fontSize: 20)),
-          content: const Text('Bir hata oluştu. Lütfen tekrar deneyiniz.',
+          content: Text('Bir hata oluştu. Lütfen tekrar deneyiniz. \n\nHata: ${response.body}',
               style: TextStyle(fontFamily: "Cairo", fontSize: 20)),
           actions: [
             Center(

@@ -196,11 +196,13 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => AboutPage()),
-                    );
+                  onPressed: () async {
+                    const url = 'https://play.google.com/store/apps/details?id=com.muhammed.noel_raffle';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   },
                   child: Text('Bizi Değerlendir'),
                   style: ElevatedButton.styleFrom(

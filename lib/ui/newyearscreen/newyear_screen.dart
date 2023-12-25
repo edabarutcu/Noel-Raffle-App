@@ -14,6 +14,25 @@ class _NewYearScreenState extends State<NewYearScreen> {
   String? _groupController;
   String? _sectorController;
 
+  int _groupValue = 100;
+  int _sectorValue = 100;
+
+  var typeList = <String, int> {
+    'Ekip-Şirket': 10,
+    'Arkadaş-Sınıf': 20,
+    'Aile-Akraba': 30,
+    'Diğer': 40
+  };
+
+  var sectorList = <String, int> {
+    'Teknoloji': 10,
+    'Eğitim': 20,
+    'Gıda': 30,
+    'Sağlık': 40,
+    'Spor': 50,
+    'Diğer': 60
+  };
+
 //class NewYearScreen extends StatelessWidget {
   //final TextEditingController _sectorController = TextEditingController();
   //final TextEditingController _groupController = TextEditingController();
@@ -147,12 +166,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
                           color: Color(0xFFCCCCCC)
                       )
                   ),
-                  items: <String>[
-                    'Ekip-Şirket',
-                    'Arkadaş-Sınıf',
-                    'Aile-Akraba',
-                    'Diğer'
-                  ].map((String value) {
+                  items: typeList.keys.toList().map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -161,6 +175,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       _groupController = value!;
+                      _groupValue = typeList[value]!;
                     });
                   },
                 ),
@@ -205,14 +220,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
                           color: Color(0xFFCCCCCC)
                       )
                   ),
-                  items: <String>[
-                    'Teknoloji',
-                    'Eğitim',
-                    'Gıda',
-                    'Sağlık',
-                    'Spor',
-                    'Diğer'
-                  ].map((String value) {
+                  items: sectorList.keys.toList().map((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -221,6 +229,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       _sectorController = value!;
+                      _sectorValue = sectorList[value]!;
                     });
                   },
                 ),
@@ -259,7 +268,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
                 } else {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewUsersScreen()),
+                    MaterialPageRoute(builder: (context) => NewUsersScreen(title: _additionalTextFieldController.text, groupValue: _groupValue, sectorValue: _sectorValue)),
                   );
                 }
               },

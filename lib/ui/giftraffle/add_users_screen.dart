@@ -3,8 +3,10 @@ import 'package:noel_raffle/ui/giftraffle/add_gift_screen.dart';
 
 class UsersScreen extends StatefulWidget {
   final String title;
+  final int groupValue;
+  final int sectorValue;
 
-  const UsersScreen({Key? key, required this.title}) : super(key: key);
+  const UsersScreen({Key? key, required this.title, required this.groupValue, required this.sectorValue}) : super(key: key);
 
   @override
   _UsersScreenState createState() => _UsersScreenState();
@@ -26,6 +28,11 @@ class _UsersScreenState extends State<UsersScreen> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
+
+    print("===========");
+    print(widget.groupValue);
+    print(widget.sectorValue);
+    print("===========");
 
     return Container(
       decoration: const BoxDecoration(
@@ -103,120 +110,174 @@ class _UsersScreenState extends State<UsersScreen> {
   }
 
   Widget _buildDialog(BuildContext context, {required VoidCallback onSave}) {
-    return Center(
-      child: SingleChildScrollView(
-        child:AlertDialog(
-              title: const Text('Yeni Katılımcı Ekle',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily: "Cairo", fontSize: 20)),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      controller: _nameController,
-                      decoration: InputDecoration(
-                        labelText: "isim",
-                        labelStyle: TextStyle(color: Colors.grey, fontSize: 18),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                      ),
-                      focusNode: _nameFocusNode,
-                      onSubmitted: (value) {
-                        _nameFocusNode.unfocus();
-                        FocusScope.of(context).requestFocus(_surnameFocusNode);
-                      },
-                    ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pop();
+      },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:10),
-                    child: TextField(
-                      controller: _surnameController,
-                      decoration: InputDecoration(
-                        labelText: "soyisim",
-                        labelStyle: TextStyle(color: Colors.grey, fontSize: 18),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey),
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Yeni Katılımcı',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.red,
+                            fontFamily: "DancingScript",
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                      ),
-                      focusNode: _surnameFocusNode,
-                      onSubmitted: (value) {
-                        _surnameFocusNode.unfocus();
-                        FocusScope.of(context).requestFocus(_emailFocusNode);
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        labelText: "email",
-                        labelStyle: TextStyle(color: Colors.grey, fontSize: 18),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                      ),
-                      focusNode: _emailFocusNode,
-                    ),
-                  ),
-                  // _buildTextField(_nameController, 'İsim', _nameFocusNode, _surnameFocusNode),
-                  // _buildTextField(_surnameController, 'Soyisim', _surnameFocusNode, _emailFocusNode),
-                  // _buildTextField(_emailController, 'Email', _emailFocusNode, FocusNode()),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Kaydet'),
-                  onPressed: () {
-                    String email = _emailController.text;
-                    String p = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
-                    RegExp regExp = new RegExp(p);
 
-                    if (_nameController.text.isEmpty ||
-                        _surnameController.text.isEmpty ||
-                        email.isEmpty ||
-                        !regExp.hasMatch(email)) {
-                      // Show an error message
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text(
-                                'Tüm alanlar zorunludur ve e-posta geçerli olmalıdır!')),
-                      );
-                    } else {
-                      onSave();
-                      Navigator.of(context).pop();
-                    }
-                  },
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: TextField(
+                            controller: _nameController,
+                            decoration: InputDecoration(
+                              labelText: "İsim",
+                              labelStyle: TextStyle(color: Colors.grey, fontSize: 18, fontFamily: "Cairo"),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.red, width: 2),
+                              ),
+                            ),
+                            focusNode: _nameFocusNode,
+                            onSubmitted: (value) {
+                              _nameFocusNode.unfocus();
+                              FocusScope.of(context).requestFocus(_surnameFocusNode);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:10),
+                          child: TextField(
+                            controller: _surnameController,
+                            decoration: InputDecoration(
+                              labelText: "Soyisim",
+                              labelStyle: TextStyle(color: Colors.grey, fontSize: 18,fontFamily: "Cairo"),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.red, width: 2),
+                              ),
+                            ),
+                            focusNode: _surnameFocusNode,
+                            onSubmitted: (value) {
+                              _surnameFocusNode.unfocus();
+                              FocusScope.of(context).requestFocus(_emailFocusNode);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: TextField(
+                            controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              labelText: "E-mail",
+                              labelStyle: TextStyle(color: Colors.grey, fontSize: 18,fontFamily: "Cairo"),
+                              filled: true,
+                              fillColor: Colors.white,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(color: Colors.grey),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(color: Colors.red, width: 2),
+                              ),
+                            ),
+                            focusNode: _emailFocusNode,
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Container(
+                            width: double.infinity,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF6A84BF)),
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                textStyle: MaterialStateProperty.all<TextStyle>(TextStyle(fontSize: 18)),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(horizontal: 0, vertical: 15)),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              child: Text('Ekle' , style: TextStyle(fontFamily: "Cairo")),
+                              onPressed: () {
+                                String email = _emailController.text;
+                                String p = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+                                RegExp regExp = new RegExp(p);
+
+                                if (_nameController.text.isEmpty ||
+                                    _surnameController.text.isEmpty ||
+                                    email.isEmpty ||
+                                    !regExp.hasMatch(email)) {
+                                  // Show an error message
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            'Tüm alanlar zorunludur ve e-posta geçerli olmalıdır!')),
+                                  );
+                                }
+                                else if (_users.any((user) => user.email == email)) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            'Bu e-posta zaten eklendi!')),
+                                  );
+                                }
+                                else {
+                                  onSave();
+                                  Navigator.of(context).pop();
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
+          ),
         ),
-      );
+      ),
+    );
   }
+
 
   Widget _buildListView(double width, double height) {
     return SizedBox(
@@ -285,8 +346,7 @@ class _UsersScreenState extends State<UsersScreen> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GiftsScreen(
-                                  users: _users, title: widget.title)));
+                              builder: (context) => GiftsScreen(users: _users, title: widget.title, groupValue: widget.groupValue, sectorValue: widget.sectorValue,)));
                     }
                   : () => showDialog(
                         context: context,
