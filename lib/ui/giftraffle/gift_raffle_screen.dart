@@ -50,42 +50,29 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
           shadowColor: Colors.transparent,
           iconTheme: const IconThemeData(color: Colors.white),
         ),
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
+        body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/gift-hand.png',
+                    width: 300,
+                    height: 250,
+                  ),
+                  const SizedBox(height: 20),
+                  _buildAdditionalTextField(),
+                  const SizedBox(height: 20),
+                  _customDropdownButton1(),
+                  const SizedBox(height: 20),
+                  _customDropdownButton2(),
+                  const SizedBox(height: 20),
+                  _buildButtonWidget(context),
+
+                ],
               ),
             ),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 70),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/gift-hand.png',
-                      width: 300,
-                      height: 250,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildAdditionalTextField(),
-                    const SizedBox(height: 20),
-                    _customDropdownButton1(),
-                    const SizedBox(height: 20),
-                    _customDropdownButton2(),
-                    const SizedBox(height: 20),
-                    _buildButtonWidget(context),
-              
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
       ),
     );
   }
@@ -93,11 +80,7 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
   Widget _buildAdditionalTextField() {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10, top: 10),
-      child: Positioned(
-        top: 400,
-        left: 0,
-        right: 0,
-        child: Container(
+      child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             color: const Color(0xFFFF6D6D),
@@ -124,7 +107,6 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 
@@ -142,8 +124,8 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   value: _groupController,
-                  dropdownColor: Color(0xFFFF6D6D),
-                  icon: Icon(Icons.arrow_drop_down),
+                  dropdownColor: const Color(0xFFFF6D6D),
+                  icon: const Icon(Icons.arrow_drop_down),
                   isExpanded: true,
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   iconSize: 24,
@@ -196,8 +178,8 @@ class _GiftRaffleScreenState extends State<GiftRaffleScreen> {
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   value: _sectorController,
-                  dropdownColor: Color(0xFFFF6D6D),
-                  icon: Icon(Icons.arrow_drop_down),
+                  dropdownColor: const Color(0xFFFF6D6D),
+                  icon: const Icon(Icons.arrow_drop_down),
                   isExpanded: true,
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   iconSize: 24,

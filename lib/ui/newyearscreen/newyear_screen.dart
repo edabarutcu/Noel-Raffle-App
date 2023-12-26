@@ -55,41 +55,25 @@ class _NewYearScreenState extends State<NewYearScreen> {
           shadowColor: Colors.transparent,
           iconTheme: const IconThemeData(color: Colors.white),
         ),
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/background.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 70,
-              left: 0,
-              right: 0,
-              child: Column(
+        body: SingleChildScrollView(
+          child: Column(
                 children: [
                   Image.asset(
                     'assets/images/logo2.png',
                     width: 300,
                     height: 250,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildAdditionalTextField(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _customDropdownButton1(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _customDropdownButton2(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   _buildButtonWidget(context),
 
                 ],
               ),
-            ),
-          ],
         ),
       ),
     );
@@ -98,11 +82,7 @@ class _NewYearScreenState extends State<NewYearScreen> {
   Widget _buildAdditionalTextField() {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 10, top: 10),
-      child: Positioned(
-        top: 400,
-        left: 0,
-        right: 0,
-        child: Container(
+      child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             color: const Color(0xFFFF6D6D),
@@ -129,7 +109,6 @@ class _NewYearScreenState extends State<NewYearScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 
@@ -147,8 +126,8 @@ class _NewYearScreenState extends State<NewYearScreen> {
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   value: _groupController,
-                  dropdownColor: Color(0xFFFF6D6D),
-                  icon: Icon(Icons.arrow_drop_down),
+                  dropdownColor: const Color(0xFFFF6D6D),
+                  icon: const Icon(Icons.arrow_drop_down),
                   isExpanded: true,
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   iconSize: 24,
@@ -201,8 +180,8 @@ class _NewYearScreenState extends State<NewYearScreen> {
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   value: _sectorController,
-                  dropdownColor: Color(0xFFFF6D6D),
-                  icon: Icon(Icons.arrow_drop_down),
+                  dropdownColor: const Color(0xFFFF6D6D),
+                  icon: const Icon(Icons.arrow_drop_down),
                   isExpanded: true,
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   iconSize: 24,
