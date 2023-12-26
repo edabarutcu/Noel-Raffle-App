@@ -2,6 +2,10 @@
 
 This is a Flutter application developed for organizing and managing raffles. The app allows users to add participants and gifts, and then performs a raffle.
 
+# Screenshots
+
+![Alt text](https://github.com/edabarutcu/Noel-Raffle-App/blob/main/screenshots/screen.png)
+
 ## Features
 
 - Add participants with their name, surname, and email.
